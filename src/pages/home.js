@@ -6,7 +6,7 @@ import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 export default function Home(props){
-    const {data, error, isLoading} = useSWR('https://ramen-api.dev/shops/yoshimuraya', fetcher)
+    const {data, error, isLoading} = useSWR('https://newsapi.org/v2/everything?q=Apple&from=2023-04-08&sortBy=popularity&apiKey=172854b5fba84e3dacf25e87d573e1c0', fetcher)
     const {register, formState: {errors}} = useForm({});
     const router = useRouter();
 
