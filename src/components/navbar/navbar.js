@@ -10,7 +10,7 @@ export default function NavMain() {
         <>
             <Navbar bg={'dark'} expand={'lg'} variant={'dark'}>
                 <Container fluid>
-                    <Navbar.Brand href={'/'}>MpTy</Navbar.Brand>
+                    <Navbar.Brand href={'/'}>News CNC</Navbar.Brand>
                     <Navbar.Toggle aria-controls={'navBarScroll'}/>
                     <Navbar.Collapse>
                         <Nav className={'me-auto my-2 my-lg-0'}
@@ -21,9 +21,9 @@ export default function NavMain() {
                                     <Button variant={"outline-primary"}>ok</Button>
                                 </Nav.Link>
                             </Link>
-                            <Link href={'/about'} passHref legacyBehavior>
+                            <Link href={'/news '} passHref legacyBehavior>
                                 <Nav.Link>
-                                    <Button variant={'outline-danger'}>no ok</Button>
+                                    <Button variant={'outline-info'}>News</Button>
                                 </Nav.Link>
                             </Link>
                         </Nav>

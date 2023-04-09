@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
-import {Card} from "react-bootstrap";
+import {Card, Col, Row} from "react-bootstrap";
 import useSWR from "swr";
+import Container from "react-bootstrap/Container";
 
 export default function News({objectID}) {
     const [article, setArticle] = useState([]);
@@ -10,45 +11,77 @@ export default function News({objectID}) {
     const {data, error, isLoading} = useSWR(`${apiUrl}`)
     console.log(data);
     useEffect(() => {
-        const PER_PAGE = 10;
+        setArticle(data?.articles);
+    }, [data])
 
-        const results = [];
-        if (data?.article){
-            for(let i = 0; i < data?.article.length ; i += PER_PAGE ) {
-                const chunk = data?.article.slice(i, i + PER_PAGE);
-                results.push(chunk);
-            }
-            setArticle(results);
-            setPage(1);
-        }
+    if (isLoading) {
+        return <p>Loading ... </p>
+    }
 
-    }, [data]);
-
+    if (error) {
+        return <p> Error fetching data.</p>
+    }
     return (
         <>
-            <div>
-                <Card>
-                    <h1>Top Headlines</h1>
-                    <Card.Body>
-                        <ul>
-                            {article.map((articleGroup, i) => (
-                                <React.Fragment key={`article-group-${i}`}>
-                                    {articleGroup.map((article) => (
-                                        <li key={article.title}>
-                                            <Card.Body>
-                                                <h2>{article.title}</h2>
-                                            </Card.Body>
+            <div >
+                {article?.map((articleGroup, i) => (
+                    <Row>
+                        <Col md={6}>
+                            <Card>
+                                <Card.Body>
+                                    <ul>
+                                        <li key={articleGroup.title}>
+                                            <Card.Title>
+                                                <h2>{articleGroup.title}</h2>
+                                            </Card.Title>
+                                            <Container md={12}>
+                                                <Card body>Author : {articleGroup.author}</Card>
+                                                <br/>
+                                                <Card.Img variant={'top'} src={articleGroup.urlToImage}
+                                                          style={{width: '34rem'}}
+                                                          className={'center'}/>
+                                            </Container>
+
+                                            <br/>
+                                            <br/>
+
                                             <Card.Text>
-                                                <h3>{article.author}</h3>
-                                                <p>{article.description}</p>
+                                                <p>{articleGroup.description}</p>
                                             </Card.Text>
                                         </li>
-                                    ))}
-                                </React.Fragment>
-                            ))}
-                        </ul>
-                    </Card.Body>
-                </Card>
+                                    </ul>
+                                </Card.Body>
+                            </Card>
+                            <br/>
+                            <br/>
+                        </Col>
+                        <Col md={6} className={'mt-5'}>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <Card>
+                                <Card.Body>
+                                    <ul>
+                                        <li key={articleGroup.title}>
+                                            <Card.Title>
+                                                <h2>{articleGroup.title}</h2>
+                                                <p className={'display-5'}>{articleGroup.publishedAt}</p>
+                                            </Card.Title>
+                                            <br/>
+                                            <br/>
+                                            <Card.Text>
+                                                <a href={articleGroup.url} target={"_blank"}>Direct to news</a>
+                                            </Card.Text>
+                                        </li>
+                                    </ul>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                ))}
             </div>
         </>)
 }
