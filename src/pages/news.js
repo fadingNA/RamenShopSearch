@@ -23,23 +23,26 @@ export default function News({objectID}) {
     }
     return (
         <>
-            <div >
+            <div>
                 {article?.map((articleGroup, i) => (
-                    <Row>
+                    <Row key={articleGroup.title}>
                         <Col md={6}>
                             <Card>
                                 <Card.Body>
                                     <ul>
-                                        <li key={articleGroup.title}>
+                                        <li>
                                             <Card.Title>
                                                 <h2>{articleGroup.title}</h2>
                                             </Card.Title>
                                             <Container md={12}>
                                                 <Card body>Author : {articleGroup.author}</Card>
                                                 <br/>
-                                                <Card.Img variant={'top'} src={articleGroup.urlToImage}
-                                                          style={{width: '34rem'}}
-                                                          className={'center'}/>
+                                                <Card.Img
+                                                    variant={"top"}
+                                                    src={articleGroup.urlToImage}
+                                                    style={{width: "34rem"}}
+                                                    className={"center"}
+                                                />
                                             </Container>
 
                                             <br/>
@@ -55,7 +58,7 @@ export default function News({objectID}) {
                             <br/>
                             <br/>
                         </Col>
-                        <Col md={6} className={'mt-5'}>
+                        <Col md={6} className={"mt-5"}>
                             <br/>
                             <br/>
                             <br/>
@@ -64,15 +67,17 @@ export default function News({objectID}) {
                             <Card>
                                 <Card.Body>
                                     <ul>
-                                        <li key={articleGroup.title}>
+                                        <li>
                                             <Card.Title>
                                                 <h2>{articleGroup.title}</h2>
-                                                <p className={'display-5'}>{articleGroup.publishedAt}</p>
+                                                <p className={"display-5"}>{articleGroup.publishedAt}</p>
                                             </Card.Title>
                                             <br/>
                                             <br/>
                                             <Card.Text>
-                                                <a href={articleGroup.url} target={"_blank"}>Direct to news</a>
+                                                <a href={articleGroup.url} target={"_blank"}>
+                                                    Direct to news
+                                                </a>
                                             </Card.Text>
                                         </li>
                                     </ul>
@@ -80,8 +85,9 @@ export default function News({objectID}) {
                             </Card>
                         </Col>
                     </Row>
-
                 ))}
+
+
             </div>
         </>)
 }
