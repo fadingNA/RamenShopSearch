@@ -3,6 +3,8 @@ import {Button, Form} from "react-bootstrap";
 import {useRouter} from "next/router";
 import {useForm} from 'react-hook-form'
 import useSWR from 'swr'
+import Container from "react-bootstrap/Container";
+import Game from "@/components/minigame/Game";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 export default function Home(props){
@@ -29,6 +31,10 @@ export default function Home(props){
                 Find location
             </Button>
         </Form>
+        <br/>
+        <Container>
+            <Game/>
+        </Container>
     </>)
 
 }

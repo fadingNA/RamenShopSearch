@@ -2,12 +2,13 @@ import React, {useState, useEffect} from "react";
 import {Card, Col, Row} from "react-bootstrap";
 import useSWR from "swr";
 import Container from "react-bootstrap/Container";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 export default function News({objectID}) {
     const [article, setArticle] = useState([]);
     const [page, setPage] = useState(1);
     const endpoint = '172854b5fba84e3dacf25e87d573e1c0'
-    const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${endpoint}`;
+    const apiUrl = `${process.env.NEWS_API}`
     const {data, error, isLoading} = useSWR(`${apiUrl}`)
     console.log(data);
     useEffect(() => {
