@@ -26,6 +26,11 @@ export default function NavMain() {
                                     <Button variant={'outline-info'}>News</Button>
                                 </Nav.Link>
                             </Link>
+                            <Link href={'/ramen'} passHref legacyBehavior>
+                                <Nav.Link>
+                                    <Button variant={'outline-light'}>Ramen</Button>
+                                </Nav.Link>
+                            </Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

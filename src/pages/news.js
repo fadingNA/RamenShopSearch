@@ -8,8 +8,8 @@ export default function News({objectID}) {
     const [article, setArticle] = useState([]);
     const [page, setPage] = useState(1);
     const endpoint = '172854b5fba84e3dacf25e87d573e1c0'
-    const apiUrl = `${process.env.NEWS_API}`
-    const {data, error, isLoading} = useSWR(`${apiUrl}`)
+
+    const {data, error, isLoading} = useSWR(`https://newsapi.org/v2/top-headlines?country=us&apiKey=172854b5fba84e3dacf25e87d573e1c0`)
     console.log(data);
     useEffect(() => {
         setArticle(data?.articles);
