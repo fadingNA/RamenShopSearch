@@ -7,11 +7,9 @@ export default function Layout(props){
         <React.Fragment>
             <NavMain/>
             <br/>
-            <Container>
+            <Container className={'content'}>
                 {props.children}
             </Container>
         </React.Fragment>
-
-
     )
 }

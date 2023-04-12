@@ -42,7 +42,7 @@ export default function News({objectID}) {
                                                     variant={"top"}
                                                     src={articleGroup.urlToImage}
                                                     style={{width: "34rem"}}
-                                                    className={"center"}
+                                                    className={"img-fluid rounded"}
                                                 />
                                             </Container>
 

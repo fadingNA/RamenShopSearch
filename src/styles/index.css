@@ -8,6 +8,7 @@ body,
 .content {
     height: 100%;
     width: 100%;
+    color: #555555;
     font-family: "Source Code Pro", sans-serif;
 }
 

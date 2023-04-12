@@ -27,6 +27,7 @@ export default function App({Component, pageProps}) {
                 }}>
                 <ColorModeContext.Provider value={colorMode}>
                     <ThemeProvider theme={theme}>
+                        <CssBaseline/>
                         <Layout>
                             <Component {...pageProps} />
                         </Layout>
