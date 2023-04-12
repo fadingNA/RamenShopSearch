@@ -5,6 +5,8 @@ import {useForm} from 'react-hook-form'
 import useSWR from 'swr'
 import Container from "react-bootstrap/Container";
 import Game from "@/components/minigame/Game";
+import Board from "@/components/minigame/Board";
+import Box from "@/components/minigame/squar";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 export default function Home(props){
@@ -34,6 +36,8 @@ export default function Home(props){
         <br/>
         <Container>
             <Game/>
+            <Board/>
+            <Box/>
         </Container>
     </>)
 
