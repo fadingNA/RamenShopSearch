@@ -4,8 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Layout from "@/components/layout/layout";
 import {SSRProvider} from "react-bootstrap";
 import {SWRConfig} from "swr";
+import {ColorModeContext, useMode} from "@/components/dashboard/theme";
+import {CssBaseline, ThemeProvider} from "@mui/material";
 
 export default function App({Component, pageProps}) {
+    const [theme, colorMode] = useMode();
+
     return (
         <SSRProvider>
             <SWRConfig
@@ -21,12 +25,15 @@ export default function App({Component, pageProps}) {
                         return res.json();
                     },
                 }}>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
+                <ColorModeContext.Provider value={colorMode}>
+                    <ThemeProvider theme={theme}>
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </ThemeProvider>
+                </ColorModeContext.Provider>
             </SWRConfig>
         </SSRProvider>
-
     )
 
 }
